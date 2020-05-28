@@ -1,0 +1,117 @@
+
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.2.4
+  creationTimestamp: null
+  name: nifcloudmachines.infrastructure.cluster.x-k8s.io
+spec:
+  group: infrastructure.cluster.x-k8s.io
+  names:
+    kind: NifcloudMachine
+    listKind: NifcloudMachineList
+    plural: nifcloudmachines
+    singular: nifcloudmachine
+  scope: Namespaced
+  validation:
+    openAPIV3Schema:
+      description: NifcloudMachine is the Schema for the nifcloudmachines API
+      properties:
+        apiVersion:
+          description: 'APIVersion defines the versioned schema of this representation
+            of an object. Servers should convert recognized schemas to the latest
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources'
+          type: string
+        kind:
+          description: 'Kind is a string value representing the REST resource this
+            object represents. Servers may infer this from the endpoint the client
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
+          type: string
+        metadata:
+          type: object
+        spec:
+          description: NifcloudMachineSpec defines the desired state of NifcloudMachine
+          properties:
+            availabilityZone:
+              description: AvailabilityZone is reference to nifcloud availability
+                zone for this instance
+              type: string
+            imageID:
+              description: ImageID is instance os image
+              type: string
+            instanceID:
+              description: InstanceID is corresponding to nifcloud `instance id`
+              type: string
+            instanceType:
+              description: InstanceType is reference to nifcloud instance type
+              type: string
+            keyName:
+              description: KeyName is a ssh key name to attach to this instance
+              type: string
+            networkInterfaces:
+              description: 'NetworkInterfaces is a list of nifcloud networkInterfaceSet
+                max 2 entry : public,private'
+              items:
+                type: string
+              maxItems: 2
+              type: array
+            providerID:
+              description: the identifier for the provider's machine instance
+              type: string
+            publicType:
+              description: PublicType specifies whether this machine get public IP
+                address or not
+              type: string
+          type: object
+        status:
+          description: NifcloudMachineStatus defines the observed state of NifcloudMachine
+          properties:
+            address:
+              description: Address contains apiserver endpoints
+              items:
+                description: NodeAddress contains information for the node's address.
+                properties:
+                  address:
+                    description: The node address.
+                    type: string
+                  type:
+                    description: Node address type, one of Hostname, ExternalIP or
+                      InternalIP.
+                    type: string
+                required:
+                - address
+                - type
+                type: object
+              type: array
+            errorMessage:
+              type: string
+            errorReason:
+              description: Constants aren't automatically generated for unversioned
+                packages. Instead share the same constant for all versioned packages
+              type: string
+            instanceState:
+              description: InstanceState is the state of the nifcloud instance
+              type: string
+            ready:
+              description: Ready is a flag whether this resouce is available or not
+              type: boolean
+            sendBootstrap:
+              description: Bootstrap data has been sended to server
+              type: boolean
+          required:
+          - ready
+          type: object
+      type: object
+  version: v1alpha2
+  versions:
+  - name: v1alpha2
+    served: true
+    storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

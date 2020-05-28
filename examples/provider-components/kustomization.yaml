@@ -1,0 +1,8 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- provider-components-nifcloud.yaml
+- provider-components-kubeadm.yaml
+- provider-components-cluster-api.yaml
+patchesStrategicMerge:
+- manager_patch.yaml

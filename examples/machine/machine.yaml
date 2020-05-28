@@ -1,0 +1,38 @@
+apiVersion: cluster.x-k8s.io/v1alpha2
+kind: Machine
+metadata:
+  name: ${CLUSTER_NAME}-node-0
+  labels:
+    cluster.x-k8s.io/cluster-name: ${CLUSTER_NAME}
+spec:
+  version: ${KUBERNETES_VERSION}
+  bootstrap:
+    configRef:
+      apiVersion: bootstrap.cluster.x-k8s.io/v1alpha2
+      kind: KubeadmConfig
+      name: ${CLUSTER_NAME}-node-0
+  infrastructureRef:
+    apiVersion: infrastructure.cluster.x-k8s.io/v1alpha2
+    kind: NifcloudMachine
+    name: ${CLUSTER_NAME}-node-0
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1alpha2
+kind: NifcloudMachine
+metadata:
+  name: ${CLUSTER_NAME}-node-0
+spec:
+  instanceType: ${NODE_INSTANCE_TYPE}
+  imageID: ${NODE_IMAGE_ID}
+  keyName: ${SSH_KEY_NAME}
+---
+apiVersion: bootstrap.cluster.x-k8s.io/v1alpha2
+kind: KubeadmConfig
+metadata:
+  name: ${CLUSTER_NAME}-node-0
+spec:
+  joinConfiguration:
+    nodeRegistration:
+      name: '{{ ds.meta_data.hostname }}'
+      kubeletExtraArgs:
+        cloud-provider: external
+
