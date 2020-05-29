@@ -17,7 +17,7 @@
 | kubectl     | v1.17.0 |
 | kustomize   | v3.5.4  | 
 | go          | 1.13.4  |
-| kind        | v0.7.0  |
+| kind        | v0.8.1  |
 
 ## Quick start
 
@@ -47,10 +47,8 @@ git clone https://github.com/nifcloud-labs/cluster-api-provider-nifcloud.git
 ```sh
 # クラスタの作成
 kind create cluster --name=clusterapi
-
-# Kubeconfigの設定
-export KUBECONFIG="$(kind get kubeconfig-path --name="clusterapi")"
 ```
+
 ### CRDの登録
 
 ```sh
