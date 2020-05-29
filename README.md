@@ -6,7 +6,7 @@ Kubernetes-native declarative infrastructure for NIFCLOUD.
 
 ## What is the Cluster API Provider NIFCLOUD
 
-[Cluster API](https://github.com/kubernetes-sigs/cluster-api)のNIFCLOUD向けプロバイダー
+[Cluster API](https://github.com/kubernetes-sigs/cluster-api) Provider for NIFCLOUD
 
 ## Compatibility with Cluster API
 
