@@ -36,7 +36,7 @@ chmod 604 $CLUSTER_API_SSH_KEY
 ### マニュフェストの作成
 
 ```sh
-git clone # <<TODO insert repository url>>
+git clone https://github.com/nifcloud-labs/cluster-api-provider-nifcloud.git
 ./examples/generator.sh
 ```
 
