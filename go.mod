@@ -1,4 +1,4 @@
-module github.com/nifcloud-lab/cluster-api-provider-nifcloud
+module github.com/nifcloud-labs/cluster-api-provider-nifcloud
 
 go 1.13
 
