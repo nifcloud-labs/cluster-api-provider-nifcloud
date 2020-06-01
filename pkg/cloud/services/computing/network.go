@@ -359,6 +359,8 @@ func ingressRuleToSDKType(i *infrav1alpha2.IngressRule) (res *computing.RequestI
 		}
 	}
 
+	res.Description = nifcloud.String(i.Description)
+
 	for _, cidr := range i.CidrBlocks {
 		ipRange := &computing.RequestIpRangesStruct{
 			CidrIp: nifcloud.String(cidr),
