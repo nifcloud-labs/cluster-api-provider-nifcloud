@@ -24,5 +24,5 @@ This provider's versions are able to install and manage the following versions o
 
 ## Quick Start
 
-See [Exmaples](./examples)
+See [Examples](./examples)
 
